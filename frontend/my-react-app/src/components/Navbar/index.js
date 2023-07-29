@@ -3,7 +3,7 @@ import { Nav, NavLink, NavMenu } from "./NavbarElements";
 
 const Navbar = () => {
 
-
+    return (
 		<Nav>
 			<NavMenu>
 			
@@ -15,7 +15,7 @@ const Navbar = () => {
                
 			</NavMenu>
 		</Nav>
-
+    );
 };
 
 export default Navbar;
