@@ -9,53 +9,6 @@ const pool = new Pool({
   port: '5432',
 });
 
-async function createTables() {
-    const client = await pool.connect();
-  
-try {
-      await client.query(`
-        CREATE TABLE Users (
-          UID int,
-          FName varchar(50),
-          LName varchar(50),
-          PRIMARY KEY (UID)
-        );
-  
-        CREATE TABLE Recipes (
-          RID int,
-          UID int REFERENCES "User"(UID),
-          RNAME varchar(50),
-          CAT varchar(50),
-          CUL varchar(50),
-          INSTR varchar(50),
-          PRIMARY KEY (RID)
-        );
-  
-        CREATE TABLE Recipe_Ingredient (
-          RID int,
-          IID int,
-          QTY varchar(50),
-          PRIMARY KEY (RID, IID)
-        );
-  
-        CREATE TABLE Ingredients (
-          IID int,
-          INAME varchar(50),
-          DET varchar(50),
-          CAL varchar(50),
-          PRIMARY KEY (IID)
-        );
-      `);
-      console.log('Tables created successfully!');
-    } catch (err) {
-      console.error('Error creating tables', err);
-    } finally {
-      client.release();
-    }
- }
-  
-createTables();
-
 const server = http.createServer(async (req, res) => {
     if (req.method === 'GET') {
       try {
@@ -76,7 +29,7 @@ const server = http.createServer(async (req, res) => {
     }
   });
 
-const port = 3000; // Choose any available port number
+const port = 5000; // Choose any available port number
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
