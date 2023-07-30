@@ -57,7 +57,7 @@ const Recipe = () => {
   };
 
   return (
-    <recipes>
+    <recipe>
     <div>
       <h1>Recipes</h1>
       <ul>
@@ -103,7 +103,7 @@ const Recipe = () => {
         <button onClick={() => navigate('/delete')}>Delete Recipe</button>
       </div>
     </div>
-        </recipes>
+    </recipe>
   );
 };
 
