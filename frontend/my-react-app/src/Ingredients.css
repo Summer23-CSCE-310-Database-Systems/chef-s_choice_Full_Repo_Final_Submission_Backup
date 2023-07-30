@@ -1,0 +1,41 @@
+body {
+    background-color: #3E1818;
+  }
+  
+  body ingredients {
+    background-color: #3E1818;
+    color: white;
+    font-family: sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body ingredients ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body ingredients li {
+    margin-bottom: 10px;
+  }
+  
+  body ingredients button {
+    background-color: #954130;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+      margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  
+  body ingredients button:hover {
+    background-color: #88352B;
+  }
+  
+  body ingredients h1 {
+    color: white;
+  }
