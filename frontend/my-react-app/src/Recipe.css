@@ -1,0 +1,41 @@
+body {
+    background-color: #3E1818;
+  }
+  
+  body Recipe {
+    background-color: #3E1818;
+    color: white;
+    font-family: sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body Recipe ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body Recupe li {
+    margin-bottom: 10px;
+  }
+  
+  body Recipe button {
+    background-color: #954130;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+      margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  
+  body Recipe button:hover {
+    background-color: #88352B;
+  }
+  
+  body Recipe h1 {
+    color: white;
+  }
