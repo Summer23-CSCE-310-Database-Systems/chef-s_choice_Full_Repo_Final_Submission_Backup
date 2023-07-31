@@ -27,6 +27,8 @@ body {
     text-align: center;
     resize: none;
     font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
   }
 
   .user-id-input::placeholder {
@@ -61,13 +63,15 @@ body {
   }
   
   .login-button {
-    background-color: #c64026;
+    background-color: #954130;
     color: black;
     border: none;
     padding: 10px 20px;
     margin-right: 10px;
     cursor: pointer;
     font-size: 20px;
+    align-items: center;
+    justify-content: center;
   }
   
   .login-button:hover {

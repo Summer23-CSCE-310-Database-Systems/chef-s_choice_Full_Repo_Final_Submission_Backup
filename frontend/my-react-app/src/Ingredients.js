@@ -4,14 +4,16 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // Use the absolute URL of the backend server
-const backendURL = 'http://localhost:80/backend/api/ingredients';
+
+const backendURL = 'http://localhost:5000/backend/api/ingredients';
+
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
   const [id, setId] = useState(null);
   const [name, setName] = useState('');
   const [details, setDetails] = useState('');
-  const [caloriesPerOz, setCaloriesPerOz] = useState(0);
+  const [caloriesPerOz, setCaloriesPerOz] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(backendURL).then((response) => {
@@ -83,11 +85,11 @@ const Ingredients = () => {
           value={caloriesPerOz}
           onChange={(e) => setCaloriesPerOz(e.target.value)}
         />
-        <button type="submit">Add Ingredient</button>
       </form>
 
       <div>
         <button onClick={() => navigate('/create')}>Create Ingredient</button>
+        <button onClick={() => navigate('/update')}>Update Ingredient</button>
         <button onClick={() => navigate('/edit')}>Edit Ingredient</button>
         <button onClick={() => navigate('/delete')}>Delete Ingredient</button>
       </div>
