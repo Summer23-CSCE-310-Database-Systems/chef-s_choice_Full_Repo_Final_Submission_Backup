@@ -11,7 +11,7 @@ const Ingredients = () => {
   const [id, setId] = useState(null);
   const [name, setName] = useState('');
   const [details, setDetails] = useState('');
-  const [caloriesPerOz, setCaloriesPerOz] = useState(0);
+  const [caloriesPerOz, setCaloriesPerOz] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(backendURL).then((response) => {
