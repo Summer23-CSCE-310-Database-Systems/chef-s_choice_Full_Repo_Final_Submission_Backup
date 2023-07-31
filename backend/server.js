@@ -6,7 +6,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: 't',
+  password: 'hungry',
   port: '5432',
 });
 
@@ -35,10 +35,10 @@ const server = http.createServer((req, res) => {
     console.error('Error handling request:', err);
     res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
     res.end('Internal Server Error.');
-  });
+  }); 
 });
 
-const port = 5000; // Choose any available port number
+const port = 80; // Choose any available port number
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
