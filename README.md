@@ -4,7 +4,7 @@
 
 github-setup-chef-s_choice created by GitHub Classroom
 
-Our application is designed to help the user manage their recipes efficiently and access them from anywhere by utilizing a database. This database containsfour individual tables holding details regarding the Recipes, Ingredients, the correlation between the two, and the User who wishes to utilize them. First and foremost our application will allow the user to Create, Update, Insert, and Delete attributes in the main three tables (Recipe, Ingredients, and User).
+Our application is designed to help the user manage their recipes efficiently and access them from anywhere by utilizing a database. This database containsfour individual tables holding details regarding the Recipes, Ingredients, the correlation between the two, and the User who wishes to utilize them. First and foremost our application will allow the user to View, Create, Update, Insert, and Delete attributes in the main three tables (Recipe, Ingredients, and User).
 
 ## Requirements
 
