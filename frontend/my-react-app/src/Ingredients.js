@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // Use the absolute URL of the backend server
-const backendURL = 'http://localhost:5200/backend/api/ingredients';
+const backendURL = 'http://localhost:80/backend/api/ingredients';
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
