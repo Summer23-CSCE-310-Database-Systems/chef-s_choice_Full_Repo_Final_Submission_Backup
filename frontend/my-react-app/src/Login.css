@@ -1,0 +1,75 @@
+body {
+    background-color: #3E1818;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login-container {
+    background-color: #3E1818;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .user-id-input {
+    width: 300px;
+    height: 30px;
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    background-color: #e23f3f;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+    resize: none;
+    font-family: sans-serif;
+  }
+
+  .user-id-input::placeholder {
+    color: black; 
+    font-size: 25px;
+    position: relative;
+  }
+
+  .user-id-input::placeholder:hover {
+    opacity: 0;
+  }
+
+  .user-id-text {
+    color: black;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensure the element doesn't interfere with input interaction */
+    transition: opacity 0.3s ease; /* Add a transition for smoother opacity change */
+  }
+
+  .user-id-text.hidden {
+    opacity: 0;
+  }
+  
+  .login-container h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    background-color: #c64026;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .login-button:hover {
+    background-color: white;
+  }

@@ -64,7 +64,7 @@ const Recipe = () => {
         {recipes.map((recipe) => (
           <li key={recipe.id}>
             {recipe.name}
-            <button onClick={() => viewRecipe(recipe)}>View</button>
+            <viewbutton onClick={() => viewRecipe(recipe)}>View</viewbutton>
           </li>
         ))}
       </ul>
@@ -93,7 +93,6 @@ const Recipe = () => {
           value={instructions}
           onChange={(e) => setInstructions(e.target.value)}
         />
-        <button type="submit">Submit Change</button>
       </form>
 
       <div>
