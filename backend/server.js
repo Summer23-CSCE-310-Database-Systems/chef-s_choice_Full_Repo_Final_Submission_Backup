@@ -1,44 +1,139 @@
-const http = require('http');
-const { Pool } = require('pg');
-const cors = require('cors'); // Import the cors middleware
+// const http = require('http');
+// const { Pool } = require('pg');
+// const express = require('express');
+// const cors = require('cors');
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'chefschoice',
-  password: 't',
-  port: '5432',
-});
+// const app = express();
 
-async function handleRequest(req, res) {
-  if (req.method === 'GET') {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM users');
-      client.release();
+// // Set up a connection to our PostgreSQL server using pg's built-in module for pooling connections and executing
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'chefschoice',
+//   password: '1',
+//   port: '5432',
+// });
 
-      res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-      res.end(JSON.stringify(result.rows));
-    } catch (err) {
-      console.error('Error fetching data from the database:', err);
-      res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-      res.end('Error fetching data from the database.');
-    }
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-    res.end('Endpoint not found.');
-  }
-}
+// // Enable CORS for all routes
+// app.use(cors());
 
-const server = http.createServer((req, res) => {
-  handleRequest(req, res).catch((err) => {
-    console.error('Error handling request:', err);
-    res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-    res.end('Internal Server Error.');
-  });
-});
+// async function _getBody(req) {
+//   return new Promise((resolve, reject) => {
+//     let body = '';
+//     req.on('data', (chunk) => {
+//       body += chunk.toString();
+//     });
+//     req.on('end', () => {
+//       resolve(JSON.parse(body));
+//     });
+//     req.on('error', (err) => {
+//       reject(err);
+//     });
+//   });
+// }
 
-const port = 5000; // Choose any available port number
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+// async function handleRequest(req, res) {
+//   switch (req.method) {
+//     case 'GET':
+//       try {
+//         const client = await pool.connect();
+//         const result = await client.query('SELECT * FROM ingredients');
+//         client.release();
+
+//         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+//         res.end(JSON.stringify(result.rows));
+//       } catch (err) {
+//         console.error('Error fetching data from the database:', err);
+//         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
+//         res.end('Error fetching data from the database.');
+//       }
+//       break;
+//     case 'POST':
+//       try {
+//         const body = await _getBody(req);
+//         const ingredient = {
+//           name: body.name,
+//           details: body.details,
+//           calories_per_oz: body.calories_per_oz,
+//         };
+
+//         const client = await pool.connect();
+//         const result = await client.query('INSERT INTO ingredients (name, details, calories_per_oz) VALUES ($1, $2, $3)', [
+//           ingredient.name,
+//           ingredient.details,
+//           ingredient.calories_per_oz,
+//         ]);
+//         client.release();
+
+//         res.writeHead(201, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+//         res.end(JSON.stringify(ingredient));
+//       } catch (err) {
+//         console.error('Error inserting data into the database:', err);
+//         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
+//         res.end('Error inserting data into the database.');
+//       }
+//       break;
+//     case 'PUT':
+//       try {
+//         const body = await _getBody(req);
+//         const id = body.id;
+//         const ingredient = {
+//           name: body.name,
+//           details: body.details,
+//           calories_per_oz: body.calories_per_oz,
+//         };
+
+//         const client = await pool.connect();
+//         const result = await client.query('UPDATE ingredients SET name=$1, details=$2, calories_per_oz=$3 WHERE id=$4', [
+//           ingredient.name,
+//           ingredient.details,
+//           ingredient.calories_per_oz,
+//           id,
+//         ]);
+//         client.release();
+
+//         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+//         res.end(JSON.stringify(ingredient));
+//       } catch (err) {
+//         console.error('Error updating data in the database:', err);
+//         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
+//         res.end('Error updating data in the database.');
+//       }
+//       break;
+//     case 'DELETE':
+//       try {
+//         const id = Number(req.params.id);
+
+//         const client = await pool.connect();
+//         const result = await client.query('DELETE FROM ingredients WHERE id=$1', [id]);
+//         client.release();
+
+//         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+//         res.end(JSON.stringify({ id }));
+//       } catch (err) {
+//         console.error('Error deleting data from the database:', err);
+//         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
+//         res.end('Error deleting data from the database.');
+//       }
+//       break;
+//     default:
+//       res.writeHead(404, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
+//       res.end('Endpoint not found.');
+//       break;
+//   }
+// }
+
+// app.use(express.json());
+
+// // Route for handling GET and POST requests to /backend/api/ingredients
+// app.route('/backend/api/ingredients').get(handleRequest).post(handleRequest);
+
+// // Route for handling PUT and DELETE requests to /backend/api/ingredients/:id
+// app.route('/backend/api/ingredients/:id').put(handleRequest).delete(handleRequest);
+
+// const port = 5000; // Choose any available port number
+// const server = http.createServer(app);
+
+// server.listen(port, () => {
+//   console.log(`Server running on http://localhost:${port}`);
+// });

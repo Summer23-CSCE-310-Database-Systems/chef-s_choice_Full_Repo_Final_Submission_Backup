@@ -1,9 +1,7 @@
-import React, { useContext, useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Ingredients.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-// Use the absolute URL of the backend server
 const backendURL = 'http://localhost:5000/backend/api/ingredients';
 
 const Ingredients = () => {
@@ -12,40 +10,73 @@ const Ingredients = () => {
   const [name, setName] = useState('');
   const [details, setDetails] = useState('');
   const [caloriesPerOz, setCaloriesPerOz] = useState(null);
-  const navigate = useNavigate();
+
   useEffect(() => {
+    console.log('Fetching ingredients from the server...');
     axios.get(backendURL).then((response) => {
+      console.log('Ingredients fetched successfully:', response.data);
       setIngredients(response.data);
     });
   }, []);
 
-  const handleAddIngredient = () => {
-    axios.post(backendURL, {
+const handleAddIngredient = (e) => {
+  e.preventDefault(); // Prevent default form submission behavior
+  console.log('Adding ingredient...');
+  axios
+    .post(backendURL, {
       name: name,
       details: details,
       calories_per_oz: caloriesPerOz,
-    }).then((response) => {
+    })
+    .then((response) => {
+      console.log('Ingredient added successfully:', response.data);
       setIngredients([...ingredients, response.data]);
+      // Reset the input fields after adding the ingredient
+      setName('');
+      setDetails('');
+      setCaloriesPerOz(null);
+    })
+    .catch((error) => {
+      console.error('Error adding ingredient:', error);
     });
+};
+
+
+const handleEditIngredient = () => {
+    console.log('Updating ingredient...');
+    axios
+      .put(`${backendURL}/${id}`, {
+        id: id,
+        name: name,
+        details: details,
+        calories_per_oz: caloriesPerOz,
+      })
+      .then((response) => {
+        console.log('Ingredient updated successfully:', response.data);
+        setIngredients((prevIngredients) =>
+          prevIngredients.map((ingredient) =>
+            ingredient.id === id ? response.data : ingredient
+          )
+        );
+      })
+      .catch((error) => {
+        console.error('Error updating ingredient:', error);
+      });
   };
 
-  const handleEditIngredient = () => {
-    axios.put(backendURL + '/' + id, {
-      name: name,
-      details: details,
-      calories_per_oz: caloriesPerOz,
-    }).then((response) => {
-      setIngredients([...ingredients, response.data]);
-    });
-  };
 
   const handleDeleteIngredient = () => {
-    axios.delete(backendURL + '/' + id).then((response) => {
-      setIngredients(ingredients.filter((ingredient) => ingredient.id !== id));
+    console.log('Deleting ingredient...');
+    axios.delete(backendURL + id).then((response) => {
+      console.log('Ingredient deleted successfully:', response.data);
+      setIngredients((prevIngredients) =>
+        prevIngredients.filter((ingredient) => ingredient.id !== id)
+      );
     });
   };
 
   const viewIngredient = (ingredient) => {
+    console.log('Viewing ingredient:', ingredient);
     setName(ingredient.name);
     setDetails(ingredient.details);
     setCaloriesPerOz(ingredient.calories_per_oz);
@@ -83,16 +114,15 @@ const Ingredients = () => {
           value={caloriesPerOz}
           onChange={(e) => setCaloriesPerOz(e.target.value)}
         />
+        <button type="submit">Add Ingredient</button>
       </form>
 
       <div>
-        <button onClick={() => navigate('/create')}>Create Ingredient</button>
-        <button onClick={() => navigate('/update')}>Update Ingredient</button>
-        <button onClick={() => navigate('/edit')}>Edit Ingredient</button>
-        <button onClick={() => navigate('/delete')}>Delete Ingredient</button>
+        <button onClick={handleEditIngredient}>Update Ingredient</button>
+        <button onClick={handleDeleteIngredient}>Delete Ingredient</button>
       </div>
     </div>
-        </ingredients>
+    </ingredients>
   );
 };
 
