@@ -14,9 +14,8 @@ body {
   
   body ingredients ul {
     list-style-type: none;
-    margin-bottom: 15px;
-    margin-top: 10px;
-    padding: 1px;
+    margin: 0;
+    padding: 0;
   }
   
   body ingredients li {
@@ -28,8 +27,7 @@ body {
     color: white;
     border: none;
     padding: 10px 20px;
-    margin-right: 10px;
-    margin-top: 20px;
+      margin-right: 10px;
     cursor: pointer;
   }
   
