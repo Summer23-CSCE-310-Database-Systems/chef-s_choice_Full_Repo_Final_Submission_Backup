@@ -24,7 +24,7 @@ const Recipe = () => {
     e.preventDefault();
     console.log('Adding recipe...');
     axios.post(backendURL, {
-      name: recipe_name,
+      recipe_name: recipe_name,
       category: category,
       culture: culture,
       instructions: instructions,
@@ -61,7 +61,7 @@ const Recipe = () => {
   };
 
   const viewRecipe = (recipe) => {
-    setName(recipe.name);
+    setName(recipe.recipe_name);
     setCategory(recipe.category);
     setCulture(recipe.culture);
     setInstructions(recipe.instructions);
@@ -74,8 +74,8 @@ const Recipe = () => {
       <h1>Recipes</h1>
       <ul>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            {recipe.name}
+          <li key={recipe.rid}>
+            {recipe.recipe_name}
             <viewbutton onClick={() => viewRecipe(recipe)}>View</viewbutton>
           </li>
         ))}
@@ -105,13 +105,12 @@ const Recipe = () => {
           value={instructions}
           onChange={(e) => setInstructions(e.target.value)}
         />
+        <button type="submit">Add Recipe</button>
       </form>
 
       <div>
-        <button onClick={handleAddRecipe}>Add Recipe</button>
-        <button onClick={() => navigate('/update')}>Update Recipe</button>
-        <button onClick={handleEditRecipe}>Edit Recipe</button>
-        <button onClick={handleDeleteRecipe}>Delete Recipe</button>
+        <button onClick={handleEditRecipe}>Update Ingredient</button>
+        <button onClick={handleDeleteRecipe}>Delete Ingredient</button>
       </div>
     </div>
     </recipe>
