@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const backendURL = 'http://localhost:80/backend/ingredients_api';
 
+
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
   const [id, setId] = useState(null);

@@ -33,6 +33,10 @@ body recipe viewbutton {
   cursor: pointer;
 }
 
+body recipe viewbutton:hover {
+  background-color: #88352B;
+}
+
 body recipe button {
   background-color: #954130;
   color: white;
