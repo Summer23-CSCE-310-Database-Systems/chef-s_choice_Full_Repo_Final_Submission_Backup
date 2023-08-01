@@ -56,7 +56,7 @@ async function handleRequest(req, res) {
         const client = await pool.connect();
         const result = await client.query(
           'UPDATE recipes SET recipe_name=$1, category=$2, culture=$3, instructions=$4 WHERE rid=$5 RETURNING *',
-          [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions]
+          [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions, recipes.rid]
         );
         client.release();
 
