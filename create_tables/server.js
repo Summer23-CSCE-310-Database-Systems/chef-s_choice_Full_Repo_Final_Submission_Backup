@@ -5,7 +5,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: 't',
+  password: 'Gecko2468',
   port: '5432',
 });
 
@@ -39,11 +39,10 @@ try {
         );
   
         CREATE TABLE Ingredients (
-          IID int,
-          INAME varchar(50),
-          DET varchar(50),
-          CAL varchar(50),
-          PRIMARY KEY (IID)
+          ID SERIAL PRIMARY KEY,
+          Name varchar(50),
+          Details varchar(50),
+          calories_per_oz varchar(50)
         );
       `);
       console.log('Tables created successfully!');
