@@ -22,13 +22,13 @@ try {
         );
   
         CREATE TABLE Recipes (
-          RID int,
+          RID SERIAL PRIMARY KEY,
           UID int,
-          RNAME varchar(50),
-          CAT varchar(50),
-          CUL varchar(50),
-          INSTR varchar(50),
-          PRIMARY KEY (RID)
+          Recipe_name varchar(50),
+          Category varchar(50),
+          Culture varchar(50),
+          Instructions varchar(50),
+          CONSTRAINT fk_orders_client FOREIGN KEY (UID) REFERENCES Users (UID)
         );
   
         CREATE TABLE Recipe_Ingredient (
