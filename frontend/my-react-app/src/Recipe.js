@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // Use the absolute URL of the backend server
-const backendURL = 'http://localhost:80/backend/api/recipe';
+const backendURL = 'http://localhost:80/backend/recipes_api';
 
 const Recipe = () => {
   const [recipes, setRecipe] = useState([]);
-  const [id, setId] = useState(null);
-  const [name, setName] = useState('');
+  const [rid, setRid] = useState(null);
+  const [recipe_name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [culture, setCulture] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -20,20 +20,32 @@ const Recipe = () => {
     });
   }, []);
 
-  const handleAddRecipe = () => {
+  const handleAddRecipe = (e) => {
+    e.preventDefault();
+    console.log('Adding recipe...');
     axios.post(backendURL, {
-      name: name,
+      name: recipe_name,
       category: category,
       culture: culture,
       instructions: instructions,
-    }).then((response) => {
+    })
+    .then((response) => {
+      console.log('Recipe added successfully:', response.data);
       setRecipe([...recipes, response.data]);
+      // Reset the input fields after adding the ingredient
+      setName('');
+      setCategory('');
+      setCulture('');
+      setInstructions('');
+    })
+    .catch((error) => {
+      console.error('Error adding recipe:', error);
     });
   };
 
   const handleEditRecipe = () => {
-    axios.put(backendURL + '/' + id, {
-      name: name,
+    axios.put(backendURL + '/' + rid, {
+      name: recipe_name,
       category: category,
       culture: culture,
       instructions: instructions,
@@ -43,8 +55,8 @@ const Recipe = () => {
   };
 
   const handleDeleteRecipe = () => {
-    axios.delete(backendURL + '/' + id).then((response) => {
-      setRecipe(recipes.filter((recipe) => recipe.id !== id));
+    axios.delete(backendURL + '/' + rid).then((response) => {
+      setRecipe(recipes.filter((recipe) => recipe.rid !== rid));
     });
   };
 
@@ -53,7 +65,7 @@ const Recipe = () => {
     setCategory(recipe.category);
     setCulture(recipe.culture);
     setInstructions(recipe.instructions);
-    setId(recipe.id);
+    setRid(recipe.rid);
   };
 
   return (
@@ -72,7 +84,7 @@ const Recipe = () => {
         <input
           type="text"
           placeholder="Name"
-          value={name}
+          value={recipe_name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
@@ -96,10 +108,10 @@ const Recipe = () => {
       </form>
 
       <div>
-        <button onClick={() => navigate('/create')}>Create Recipe</button>
+        <button onClick={handleAddRecipe}>Add Recipe</button>
         <button onClick={() => navigate('/update')}>Update Recipe</button>
-        <button onClick={() => navigate('/edit')}>Edit Recipe</button>
-        <button onClick={() => navigate('/delete')}>Delete Recipe</button>
+        <button onClick={handleEditRecipe}>Edit Recipe</button>
+        <button onClick={handleDeleteRecipe}>Delete Recipe</button>
       </div>
     </div>
     </recipe>

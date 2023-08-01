@@ -10,7 +10,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: '1',
+  password: 'hungry',
   port: '5432',
 });
 
@@ -22,12 +22,12 @@ app.use(express.json());
 
 // Import your API files for each entity
 const ingredientsAPI = require('./ingredients_api');
-// const recipesAPI = require('./recipes_api');
+const recipesAPI = require('./recipes_api');
 
 
 // Mount the API routers
 app.use('/backend/ingredients_api', ingredientsAPI);
-// app.use('/backend/recipes_api', recipesAPI);
+app.use('/backend/recipes_api', recipesAPI);
 
 
 const port = 80; // Choose any available port number
