@@ -1,44 +1,38 @@
 const http = require('http');
+const express = require('express');
+const cors = require('cors');
 const { Pool } = require('pg');
-const cors = require('cors'); // Import the cors middleware
 
+const app = express();
+
+// Set up a connection to our PostgreSQL server using pg's built-in module for pooling connections and executing
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: 'hungry',
+  password: '1',
   port: '5432',
 });
 
-async function handleRequest(req, res) {
-  if (req.method === 'GET') {
-    try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM users');
-      client.release();
+// Enable CORS for all routes
+app.use(cors());
 
-      res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-      res.end(JSON.stringify(result.rows));
-    } catch (err) {
-      console.error('Error fetching data from the database:', err);
-      res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-      res.end('Error fetching data from the database.');
-    }
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-    res.end('Endpoint not found.');
-  }
-}
+// Middleware to parse request bodies as JSON
+app.use(express.json());
 
-const server = http.createServer((req, res) => {
-  handleRequest(req, res).catch((err) => {
-    console.error('Error handling request:', err);
-    res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }); // Set the 'Access-Control-Allow-Origin' header to allow all origins (*)
-    res.end('Internal Server Error.');
-  }); 
-});
+// Import your API files for each entity
+const ingredientsAPI = require('./ingredients_api');
+// const recipesAPI = require('./recipes_api');
+
+
+// Mount the API routers
+app.use('/backend/ingredients_api', ingredientsAPI);
+// app.use('/backend/recipes_api', recipesAPI);
+
 
 const port = 80; // Choose any available port number
+const server = http.createServer(app);
+
 server.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
