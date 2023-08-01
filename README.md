@@ -64,13 +64,16 @@ The application can also be seen using a browser and navigating to http://localh
 
 4. Fill in the newly created tables with whatever attributes you want so long as they fulfill the set data types.
 
+6. In order for the backend to connect seamlessly you first need to change the "Password" variable in the backend folder for the 
+   "server. js", "ingredients_api.js", and "ingredients.js" (this one's in the api folder) files.
+
 5. Now, open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\backend 
    and run the command 'npm start' to run the backend server.
 
 6. Open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\frontend\my-react-app 
    and run the command 'npm start' to run the   backend server.
 
-7. From here the application should open on it's own, in the event that it does not, opn up your browser and enter:
+7. From here the application should open on it's own, in the event that it does not, open up your browser and enter:
    'http:localhost:3000' in order to load the front-end, already connected to the back-end
 
 8. As of now no login specification has been enables so enter any User ID you want and continue into the following pages.
