@@ -8,7 +8,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: 'hungry',
+  password: 'Gecko2468',
   port: '5432',
 });
 
@@ -55,7 +55,7 @@ async function handleRequest(req, res) {
         // Update the ingredient in the database
         const client = await pool.connect();
         const result = await client.query(
-          'UPDATE recipes SET recipe_name=$1, category=$2, culture=$3 instructions=$4 WHERE id=$5 RETURNING *',
+          'UPDATE recipes SET recipe_name=$1, category=$2, culture=$3, instructions=$4 WHERE rid=$5 RETURNING *',
           [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions]
         );
         client.release();
@@ -68,14 +68,14 @@ async function handleRequest(req, res) {
       break;
     case 'DELETE':
       try {
-        const id = Number(req.params.id);
+        const rid = Number(req.params.rid);
 
         const client = await pool.connect();
-        const result = await client.query('DELETE FROM recipes WHERE id=$1', [id]);
+        const result = await client.query('DELETE FROM recipes WHERE rid=$1', [rid]);
         client.release();
 
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        res.end(JSON.stringify({ id }));
+        res.end(JSON.stringify({ rid }));
       } catch (err) {
         console.error('Error deleting data from the database:', err);
         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
@@ -92,7 +92,7 @@ async function handleRequest(req, res) {
 // Route for handling GET and POST requests to /backend/ingredients_api
 router.route('/').get(handleRequest).post(handleRequest);
 
-// Route for handling PUT and DELETE requests to /backend/ingredients_api/:id
-router.route('/:id').put(handleRequest).delete(handleRequest);
+// Route for handling PUT and DELETE requests to /backend/ingredients_api/:rid
+router.route('/:rid').put(handleRequest).delete(handleRequest);
 
 module.exports = router;
