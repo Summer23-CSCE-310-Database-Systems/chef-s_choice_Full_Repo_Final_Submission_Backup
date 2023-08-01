@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Ingredients.css';
 import axios from 'axios';
 
-const backendURL = 'http://localhost:5000/backend/api/ingredients';
+const backendURL = 'http://localhost:80/backend/ingredients_api';
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -65,9 +65,9 @@ const handleEditIngredient = () => {
   };
 
 
-  const handleDeleteIngredient = () => {
+const handleDeleteIngredient = () => {
     console.log('Deleting ingredient...');
-    axios.delete(backendURL + id).then((response) => {
+    axios.delete(`${backendURL}/${id}`).then((response) => {
       console.log('Ingredient deleted successfully:', response.data);
       setIngredients((prevIngredients) =>
         prevIngredients.filter((ingredient) => ingredient.id !== id)
