@@ -44,19 +44,35 @@ const Recipe = () => {
   };
 
   const handleEditRecipe = () => {
-    axios.put(backendURL + '/' + rid, {
-      name: recipe_name,
-      category: category,
-      culture: culture,
-      instructions: instructions,
-    }).then((response) => {
-      setRecipe([...recipes, response.data]);
-    });
+    console.log('Updating ingredient...');
+    axios
+      .put(`${backendURL}/${rid}`, {
+        rid: rid,
+        recipe_name: recipe_name,
+        category: category,
+        culture: culture,
+        instructions: instructions,
+      })
+      .then((response) => {
+        console.log('Recipe updated successfully:', response.data);
+        setRecipe((prevRecipes) =>
+          prevRecipes.map((recipe) =>
+            recipe.rid === rid ? response.data : recipe
+          )
+        );
+      })
+      .catch((error) => {
+        console.error('Error updating ingredient:', error);
+      });
   };
 
   const handleDeleteRecipe = () => {
-    axios.delete(backendURL + '/' + rid).then((response) => {
-      setRecipe(recipes.filter((recipe) => recipe.rid !== rid));
+    console.log('Deleting recipes...');
+    axios.delete(`${backendURL}/${rid}`).then((response) => {
+      console.log('Ingredient deleted successfully:', response.data);
+      setRecipe((prevRecipes) =>
+        prevRecipes.filter((recipe) => recipe.rid !== rid)
+      );
     });
   };
 
