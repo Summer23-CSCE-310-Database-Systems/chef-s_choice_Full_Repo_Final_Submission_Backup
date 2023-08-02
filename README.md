@@ -79,39 +79,42 @@ Instance 2:
 
 The application can also be seen using a browser and navigating to http://localhost:3000/
 
+To create the tables in the database follow these steps:
+
+In order To obtain the correct tables to run any functionality tests, open a command prompt and change the current directory (CD) into:
+
+`...\github-setup-chef-s_choice\create_tables`
+
+From here, in the code go to the "server.js" file, change the password into your own PostgreSQL password, create a database "chefschoice" in any PostgreSQL DBMS you prefer (pgAdmin4, DBeaver, etc...) and run the command `npm start` to create your tables.
+
 ## Deployment
 
 1. For this assignment you should clone the gitHub repository.
 
-2. In order to obtain the correct tables to run any functionality tests, open a command prompt and change the current directory (CD) into
-   ...\github-setup-chef-s_choice\create_tables, go into the "server.js" file, change the password into your own PostgreSQL password, create a database "chefschoice" in any PostgreSQL DBMS you prefer (pgAdmin4, DBeaver, etc...) and run the command 'npm start' to create your tables.
-
-3. Fill in the newly created tables with whatever attributes you want so long as they fulfill the set data types.
-
-4. In order for the backend to connect seamlessly you first need to change the "Password" variable in the backend folder for the 
+2. In order for the backend to connect seamlessly you first need to change the "Password" variable in the backend folder for the 
    "server. js", "ingredients_api.js", and "ingredients.js" (this one's in the api folder) files.
 
-5. Now, open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\backend 
+3. Now, open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\backend 
    and run the command 'npm start' to run the backend server.
 
-6. Open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\frontend\my-react-app 
+4. Open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\frontend\my-react-app 
    and run the command 'npm start' to run the   backend server.
 
-7. From here the application should open on it's own, in the event that it does not, open up your browser and enter:
+5. From here the application should open on it's own, in the event that it does not, open up your browser and enter:
    'http:localhost:3000' in order to load the front-end, already connected to the back-end
 
-8. As of now no login specification has been enables so enter any User ID you want and continue into the following pages.
+6. As of now no login specification has been enables so enter any User ID you want and continue into the following pages.
 
-9. After submitting to the Login page you will be at the Recipe page, here we have implemented the CRUD functionality, making it so that   
+7. After submitting to the Login page you will be at the Recipe page, here we have implemented the CRUD functionality, making it so that   
    you may Add, View, Update, or Delete any of the tuples in the Recipe database.
 
-10. To complete this function, simply type in any information into the provided Text Boxes and select "Add Recipe", this will add it to 
-    the Recipe table and display itself around the top of the page to be clicked on and viewed inside those same text boxes at any time. 
+8. To complete this function, simply type in any information into the provided Text Boxes and select "Add Recipe", this will add it to 
+   the Recipe table and display itself around the top of the page to be clicked on and viewed inside those same text boxes at any time. 
 
-11. In order to run the Update and Delete commands, you simply click on the "View" button next to their name at the top of the page, if    
-    you want to update them you type in the new informatio and click the "Update Recipe" button. If you want to delete the recipe from the table all you need to hit is "Delete Recipe" after you're viewing it.
+9. In order to run the Update and Delete commands, you simply click on the "View" button next to their name at the top of the page, if    
+   you want to update them you type in the new informatio and click the "Update Recipe" button. If you want to delete the recipe from the table all you need to hit is "Delete Recipe" after you're viewing it.
 
-12. Steps 9 through 11 apply almost directly to the way in which the "Ingredients" page is implemented, having the same functionality and 
+10. Steps 7 through 9 apply almost directly to the way in which the "Ingredients" page is implemented, having the same functionality and 
     operated in the same way.
 
 ## Future Plans
