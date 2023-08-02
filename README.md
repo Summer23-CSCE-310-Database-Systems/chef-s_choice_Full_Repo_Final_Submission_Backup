@@ -29,24 +29,25 @@ Download this code repository by using git:
 
 Make sure you have both node and npm installed by using the commands
 
-   npm -v
-   node -v
+   `npm -v`
+   `node -v`
 
-   If these commands come up with errors or no result follow the instructions here for both npn and Node: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+   If these commands come up with errors or no result follow the instructions here for both npn and Node: 
+   `https://docs.npmjs.com/downloading-and-installing-node-js-and-npm`
 
 Also have <u><b>React-scripts</b></u> installed, if you don't simply use the command:
 
-   npm install -g react-scripts
+`npm install -g react-scripts`
 
 Other helpful installs for npm we've come across that are required to run the code:
 
-<u><b>Axios:</b></u> npm install axios
+<u><b>Axios:</b></u>              npm install axios
 
-<u><b>React-Router:</b></u> npm install react-router-dom
+<u><b>React-Router:</b></u>       npm install react-router-dom
 
-<u><b>React-Icons:</b></u> npm install react-icons
+<u><b>React-Icons:</b></u>        npm install react-icons
 
-<u><b>Styled Components:</b></u> npm install styled-components
+<u><b>Styled Components:</b></u>  npm install styled-components
 
 ## Tests
 
@@ -58,7 +59,7 @@ Run the following commands in two seperate instances in Powershell if using wind
 
 Instance 1: 
 
-` cd ...\github-setup-chef-s_choice\backend`
+`cd ...\github-setup-chef-s_choice\backend`
 
 `npm start`
 
