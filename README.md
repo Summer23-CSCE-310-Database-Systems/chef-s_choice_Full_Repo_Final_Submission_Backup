@@ -41,13 +41,21 @@ Also have <u><b>React-scripts</b></u> installed, if you don't simply use the com
 
 Other helpful installs for npm we've come across that are required to run the code:
 
-<u><b>Axios:</b></u>              npm install axios
+<u><b>Axios:</b></u>   
 
-<u><b>React-Router:</b></u>       npm install react-router-dom
+`npm install axios`
 
-<u><b>React-Icons:</b></u>        npm install react-icons
+<u><b>React-Router:</b></u>       
 
-<u><b>Styled Components:</b></u>  npm install styled-components
+`npm install react-router-dom`
+
+<u><b>React-Icons:</b></u>       
+
+`npm install react-icons`
+
+<u><b>Styled Components:</b></u>  
+
+`npm install styled-components`
 
 ## Tests
 
