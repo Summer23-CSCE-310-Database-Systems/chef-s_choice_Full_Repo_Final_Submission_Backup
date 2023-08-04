@@ -17,7 +17,7 @@ async function handleRequest(req, res) {
     case 'GET':
       try {
         const client = await pool.connect();
-        const result = await client.query('SELECT * FROM recipes');
+        const result = await client.query('SELECT * FROM users');
         client.release();
 
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
@@ -31,13 +31,13 @@ async function handleRequest(req, res) {
     case 'POST':
       try {
         // Parse the request body to get the ingredient data
-        const recipes = req.body;
+        const users = req.body;
 
         // Insert the ingredient into the database
         const client = await pool.connect();
         const result = await client.query(
-          'INSERT INTO recipes (recipe_name, category, culture, instructions) VALUES ($1, $2, $3, $4) RETURNING *',
-          [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions]
+          'INSERT INTO users (fname, lname) VALUES ($1, $2) RETURNING *',
+          [users.fname, users.lname]
         );
         client.release();
 
@@ -50,13 +50,13 @@ async function handleRequest(req, res) {
     case 'PUT':
       try {
         // Parse the request body to get the ingredient data
-        const recipes = req.body;
+        const users = req.body;
 
         // Update the ingredient in the database
         const client = await pool.connect();
         const result = await client.query(
-          'UPDATE recipes SET recipe_name=$1, category=$2, culture=$3, instructions=$4 WHERE rid=$5 RETURNING *',
-          [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions, recipes.rid]
+          'UPDATE users SET fname=$1, lname=$2 WHERE id=$3 RETURNING *',
+          [users.fname, users.lname, users.uid]
         );
         client.release();
 
@@ -68,14 +68,14 @@ async function handleRequest(req, res) {
       break;
     case 'DELETE':
       try {
-        const rid = Number(req.params.rid);
+        const uid = Number(req.params.rid);
 
         const client = await pool.connect();
-        const result = await client.query('DELETE FROM recipes WHERE rid=$1', [rid]);
+        const result = await client.query('DELETE FROM users WHERE uid=$1', [uid]);
         client.release();
 
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        res.end(JSON.stringify({ rid }));
+        res.end(JSON.stringify({ uid }));
       } catch (err) {
         console.error('Error deleting data from the database:', err);
         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
@@ -93,6 +93,6 @@ async function handleRequest(req, res) {
 router.route('/').get(handleRequest).post(handleRequest);
 
 // Route for handling PUT and DELETE requests to /backend/ingredients_api/:rid
-router.route('/:rid').put(handleRequest).delete(handleRequest);
+router.route('/:uid').put(handleRequest).delete(handleRequest);
 
 module.exports = router;

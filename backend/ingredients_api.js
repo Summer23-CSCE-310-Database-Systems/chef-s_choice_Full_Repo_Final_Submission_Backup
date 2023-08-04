@@ -1,6 +1,6 @@
 const express = require('express');
 const { Pool } = require('pg');
-
+const ps = require('./password')
 const router = express.Router();
 
 // Set up a connection to our PostgreSQL server using pg's built-in module for pooling connections and executing
@@ -8,7 +8,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: 'hungry',
+  password: ps,
   port: '5432',
 });
 

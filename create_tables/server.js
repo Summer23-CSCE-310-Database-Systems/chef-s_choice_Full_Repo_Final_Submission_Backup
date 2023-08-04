@@ -15,10 +15,9 @@ async function createTables() {
 try {
       await client.query(`
         CREATE TABLE Users (
-          UID int,
+          UID SERIAL PRIMARY KEY,
           FName varchar(50),
-          LName varchar(50),
-          PRIMARY KEY (UID)
+          LName varchar(50)
         );
   
         CREATE TABLE Recipes (
