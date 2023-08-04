@@ -1,8 +1,8 @@
 import React, { useContext, useState,useEffect } from 'react';
 import './Recipe.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { useUser } from './UserContext';
 // Use the absolute URL of the backend server
 const backendURL = 'http://localhost:80/backend/recipes_api';
 
@@ -14,6 +14,7 @@ const Recipe = () => {
   const [culture, setCulture] = useState('');
   const [instructions, setInstructions] = useState('');
   const navigate = useNavigate();
+  const { uid } = useUser();
   useEffect(() => {
     axios.get(backendURL).then((response) => {
       setRecipe(response.data);
@@ -24,6 +25,7 @@ const Recipe = () => {
     e.preventDefault();
     console.log('Adding recipe...');
     axios.post(backendURL, {
+      uid : uid,
       recipe_name: recipe_name,
       category: category,
       culture: culture,
@@ -87,7 +89,7 @@ const Recipe = () => {
   return (
     <recipe>
     <div>
-      <h1>Recipes</h1>
+      <h1>Recipes, {uid}</h1>
       <ul>
         {recipes.map((recipe) => (
           <li key={recipe.rid}>
@@ -125,8 +127,8 @@ const Recipe = () => {
       </form>
 
       <div>
-        <button onClick={handleEditRecipe}>Update Ingredient</button>
-        <button onClick={handleDeleteRecipe}>Delete Ingredient</button>
+        <button onClick={handleEditRecipe}>Update Recipe</button>
+        <button onClick={handleDeleteRecipe}>Delete Recipe</button>
       </div>
     </div>
     </recipe>

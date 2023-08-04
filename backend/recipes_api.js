@@ -36,8 +36,8 @@ async function handleRequest(req, res) {
         // Insert the ingredient into the database
         const client = await pool.connect();
         const result = await client.query(
-          'INSERT INTO recipes (recipe_name, category, culture, instructions) VALUES ($1, $2, $3, $4) RETURNING *',
-          [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions]
+          'INSERT INTO recipes (uid, recipe_name, category, culture, instructions) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+          [recipes.uid, recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions]
         );
         client.release();
 
