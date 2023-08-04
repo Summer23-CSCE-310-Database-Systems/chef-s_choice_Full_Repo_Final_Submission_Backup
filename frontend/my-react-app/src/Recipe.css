@@ -15,14 +15,14 @@ body recipe {
 
 body recipe ul {
   list-style-type: none;
-  margin-bottom: 15px;
+  margin-bottom: 0.1px;
   margin-top: 10px;
   padding: 1px;
 }
 
 body recipe li {
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 
 body recipe viewbutton {
@@ -30,6 +30,10 @@ body recipe viewbutton {
   color: white;
   border: none;
   padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 30px;
   cursor: pointer;
 }
 
