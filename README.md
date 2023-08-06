@@ -85,14 +85,14 @@ In order To obtain the correct tables to run any functionality tests, open a com
 
 `...\github-setup-chef-s_choice\create_tables`
 
-From here, in the code go to the "server.js" file, change the password into your own PostgreSQL password, create a database "chefschoice" in any PostgreSQL DBMS you prefer (pgAdmin4, DBeaver, etc...) and run the command `npm start` to create your tables.
+From here, in your Visual Studio code go to the "password.js" file in the create_tables folder, change the password into your own PostgreSQL password, create a database "chefschoice" in any PostgreSQL DBMS you prefer (pgAdmin4, DBeaver, etc...) and run the command `npm start` in the command prompt above to create your tables.
 
 ## Deployment
 
 1. For this assignment you should clone the gitHub repository.
 
 2. In order for the backend to connect seamlessly you first need to change the "Password" variable in the backend folder for the 
-   "server. js", "ingredients_api.js", and "ingredients.js" (this one's in the api folder) files.
+   "password.js" file to your own PostgreSQL password.
 
 3. Now, open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\backend 
    and run the command 'npm start' to run the backend server.
@@ -116,6 +116,8 @@ From here, in the code go to the "server.js" file, change the password into your
 
 10. Steps 7 through 9 apply almost directly to the way in which the "Ingredients" page is implemented, having the same functionality and 
     operated in the same way.
+
+11. After you are satisfied with the tables and any changes you may have made, you may return to the "Login" Page and Logout your User.
 
 ## Future Plans
 
