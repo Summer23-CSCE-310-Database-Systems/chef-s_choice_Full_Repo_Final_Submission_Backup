@@ -103,7 +103,8 @@ From here, in your Visual Studio code go to the "password.js" file in the create
 5. From here the application should open on it's own, in the event that it does not, open up your browser and enter:
    'http:localhost:3000' in order to load the front-end, already connected to the back-end
 
-6. As of now no login specification has been enables so enter any User ID you want and continue into the following pages.
+6. From the login page you may sign in using any name, this name will be provided an automated User ID which will permanently stick to    
+   that name and be added to the Database.
 
 7. After submitting to the Login page you will be at the Recipe page, here we have implemented the CRUD functionality, making it so that   
    you may Add, View, Update, or Delete any of the tuples in the Recipe database.
