@@ -10,56 +10,23 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     justify-content: center;
     height: 100vh;
   }
-  
-  .user-id-input {
-    width: 300px;
-    height: 30px;
-    font-size: 24px;
-    padding: 10px;
-    border: none;
-    background-color: #e23f3f;
-    color: black;
-    margin-bottom: 20px;
-    text-align: center;
-    resize: none;
-    font-family: sans-serif;
-    align-items: center;
-    justify-content: center;
-  }
 
-  .user-id-input::placeholder {
-    color: black; 
-    font-size: 25px;
-    position: relative;
-  }
-
-  .user-id-input::placeholder:hover {
-    opacity: 0;
-  }
-
-  .user-id-text {
-    color: black;
-    font-size: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none; /* Ensure the element doesn't interfere with input interaction */
-    transition: opacity 0.3s ease; /* Add a transition for smoother opacity change */
-  }
-
-  .user-id-text.hidden {
-    opacity: 0;
+  .text-box {
+    margin-bottom: 30px;
   }
   
   .login-container h1 {
     color: white;
     font-size: 32px;
     margin-bottom: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
   
   .login-button {
@@ -73,7 +40,23 @@ body {
     align-items: center;
     justify-content: center;
   }
-  
+
   .login-button:hover {
+    background-color: white;
+  }
+
+  .logout-button {
+    background-color: #954130;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logout-button:hover {
     background-color: white;
   }
