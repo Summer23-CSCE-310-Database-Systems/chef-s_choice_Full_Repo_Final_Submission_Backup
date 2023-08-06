@@ -72,26 +72,28 @@ function Login() {
       {uid ? (
         <div>
           <h1>Welcome User {uid}: {localStorage.getItem('userName')}!</h1>
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleLogout} className="logout-button">Logout</button>
         </div>
       ) : (
         <div>
           <h1>Login</h1>
           <form onSubmit={handleLogin}>
             <input
+              className="text-box"
               type="text"
               placeholder="First Name"
               value={fname}
               onChange={(e) => setFName(e.target.value)}
             />
             <input
+              className="text-box"
               type="text"
               placeholder="Last Name"
               value={lname}
               onChange={(e) => setLName(e.target.value)}
             />
-            <button type="submit">Login</button>
           </form>
+          <button onClick={handleLogin} className="login-button">Login</button>
         </div>
       )}
     </div>
