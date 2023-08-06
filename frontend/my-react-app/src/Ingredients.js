@@ -87,7 +87,7 @@ const handleDeleteIngredient = () => {
   return (
     <ingredients>
     <div>
-      <h1>Ingredients</h1>
+      <h1>Ingredients,</h1>
       <ul>
         {ingredients.map((ingredient) => (
           <li key={ingredient.id}>

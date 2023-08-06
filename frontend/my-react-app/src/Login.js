@@ -25,6 +25,10 @@ function Login() {
     const existingUser = users.find(user => user.fname === fname && user.lname === lname);
     if (existingUser) {
       setUid(existingUser.uid);
+      setFName(existingUser.fname);
+      setLName(existingUser.lname);
+      localStorage.setItem('uid', uid);
+      localStorage.setItem('userName', `${existingUser.fname} ${existingUser.lname}`);
     } else {
       try {
         const response = await axios.post(backendURL, {
@@ -36,6 +40,8 @@ function Login() {
         setUsers([...users, response.data]);
         setFName('');
         setLName('');
+        localStorage.setItem('uid', uid);
+        localStorage.setItem('userName', `${response.data.fname} ${response.data.lname}`);
       } catch (error) {
         console.error('Error adding user:', error);
       }
