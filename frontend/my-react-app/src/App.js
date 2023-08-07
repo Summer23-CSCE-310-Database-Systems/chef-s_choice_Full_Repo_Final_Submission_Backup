@@ -10,23 +10,21 @@ import Recipe_Ingredient from './Recipe_Ingredient.js';
 
 function App() {
   return (
-    <UserProvider> {/* Wrap your app with the UserProvider */}
+    <UserProvider> {/* Wrap your entire app with the UserProvider */}
       <Router>
+        {/* Include the Navbar component for navigation */}
         <Navbar />
         <Routes>
+          {/* Define routes for different components */}
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/recipe" element={<Recipe />} />
-          <Route path="/recipe_ingredient" element={<Recipe_Ingredient/>} />
+          <Route path="/recipe_ingredient" element={<Recipe_Ingredient />} />
           <Route path='/Ingredients' element={<Ingredients />} />
         </Routes>
       </Router>
     </UserProvider>
   );
 }
-
-
-
- 
 
 export default App;
