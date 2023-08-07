@@ -89,7 +89,7 @@ const Recipe = () => {
   return (
     <recipe>
     <div>
-      <h1>Recipes, {uid}</h1>
+      <h1>Recipes: {uid}</h1>
       <ul>
         {recipes.map((recipe) => (
           <li key={recipe.rid}>
