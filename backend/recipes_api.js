@@ -14,6 +14,7 @@ const pool = new Pool({
 
 async function handleRequest(req, res) {
   switch (req.method) {
+    // Write a GET case to obtain data from the Recipe table
     case 'GET':
       try {
         const client = await pool.connect();
@@ -28,8 +29,11 @@ async function handleRequest(req, res) {
         res.end('Error fetching data from the database.');
       }
       break;
+
+    // Write a POST case to Insert data to the Recipe table
     case 'POST':
       try {
+
         // Parse the request body to get the ingredient data
         const recipes = req.body;
 
@@ -47,8 +51,10 @@ async function handleRequest(req, res) {
         res.status(500).json({ error: 'Error inserting data into the database.' });
       }
       break;
+    // Write a PUT case to Update data in the Recipe table
     case 'PUT':
       try {
+
         // Parse the request body to get the ingredient data
         const recipes = req.body;
 
@@ -66,6 +72,7 @@ async function handleRequest(req, res) {
         res.status(500).json({ error: 'Error updating data in the database.' });
       }
       break;
+    // Write a DELETE case to remove data from the Recipe table
     case 'DELETE':
       try {
         const rid = Number(req.params.rid);
