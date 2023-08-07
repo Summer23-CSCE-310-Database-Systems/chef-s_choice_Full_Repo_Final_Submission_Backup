@@ -60,7 +60,7 @@ Other helpful installs for npm we've come across that are required to run the co
 
 ## Tests
 
-For testing we decided to run individual components such as each functionality of CRUD for the Recipe and Ingredients pages, making sure that nothing broke along the way of our implementations. None of us were comfortable or knowledgabe in creating individual test cases so we created a system. Before a git pull we would individually check the application for any existing bugs, if none were found we performed the pull and checked again, if new bugs appeared we knew where to check and could systematically remove them from our application.
+For testing we decided to run individual components such as each functionality of CRUD for the Recipe and Ingredients pages, making sure that nothing broke along the way of our implementations. None of us were comfortable or knowledgeable in creating individual test cases so we created a system. Before a git pull we would individually check the application for any existing bugs, if none were found we performed the pull and checked again, if new bugs appeared we knew where to check and could systematically remove them from our application.
 
 ## Execute Code
 
@@ -117,8 +117,10 @@ From here, in your Visual Studio code go to the "password.js" file in the create
 
 10. Steps 7 through 9 are the same for the Ingredients page as it has the same functionality.
 
+11. Lastly you can navigate to the Recipe-Ingredient page
+
 11. After you are satisfied with the tables and any changes you may have made, you may return to the "Login" Page and Logout your User.
 
 ## Final Thoughts
 
-We are satisfied with the end result of this project, although we were unable to implement every functionality we were previously intneding to in our design we were still able to create a well-functioning application that connects to each table in our database. CRUD has been implemented extensively for the Recipe and Ingredient tables with it being used mildly for the User and Recipe-Ingredient tables which are utilized mostly in the backend to add connections between the tables. We had to depart from a few additional implementations such as the Category selection and the Favorites feature as these were either already partially or fully implemented or proved too troublesome to complete in time. Our team worked tirelessly over these last couple weeks to try and supply the best product we could in the time given, and if this Final Code Submission is what we have to show for it then we believe we succeeded.
+We are satisfied with the end result of this project, although we were unable to implement every functionality we were previously intending to in our design we were still able to create a well-functioning application that connects to each table in our database. CRUD has been implemented extensively for the Recipe and Ingredient tables with it being implemented slightly less for the User and Recipe-Ingredient tables which are utilized mostly in the backend to add connections between the tables. We had to depart from a few additional implementations such as the Category selection and the Favorites feature as these were either already partially or fully implemented or proved too troublesome to complete in time. Our team worked tirelessly over these last couple weeks to try and supply the best product we could in the time given, and if this Final Code Submission is what we have to show for it then we believe we succeeded.
