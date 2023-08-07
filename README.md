@@ -13,6 +13,7 @@ This code has been run and tested on:
 - PostgreSQL - v15.3
 - npm (Node Package Manager) - v9.5.0
 - Nodejs - v18.15.0
+- Yarn - v0.32+git
 
 ## External Deps
 
@@ -94,20 +95,19 @@ From here, in your Visual Studio code go to the "password.js" file in the create
 2. In order for the backend to connect seamlessly you first need to change the "Password" variable in the backend folder for the 
    "password.js" file to your own PostgreSQL password.
 
-3. Now, open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\backend 
+3. Now, open up another command prompt and change the current directory (CD) to `...\github-setup-chef-s_choice\backend`
    and run the command 'npm start' to run the backend server.
 
-4. Open up another command prompt and change the current directory (CD) to ...\github-setup-chef-s_choice\frontend\my-react-app 
-   and run the command 'npm start' to run the   backend server.
+4. Open up another command prompt and change the current directory (CD) to `...\github-setup-chef-s_choice\frontend\my-react-app` 
+   and run the command 'npm start' to run the backend server.
 
 5. From here the application should open on it's own, in the event that it does not, open up your browser and enter:
-   'http:localhost:3000' in order to load the front-end, already connected to the back-end
+   `http:localhost:3000` in order to load the front-end, already connected to the back-end
 
 6. From the login page you may sign in using any name, this name will be provided an automated User ID which will permanently stick to    
    that name and be added to the Database.
 
-7. After submitting to the Login page you will be at the Recipe page, here we have implemented the CRUD functionality, making it so that   
-   you may Add, View, Update, or Delete any of the tuples in the Recipe database.
+7. After submitting to the Login page you can move on to the Recipe page using the Navigation bar, here we have implemented the CRUD functionality, making it so that you may Add, View, Update, or Delete any of the tuples in the Recipe database.
 
 8. To complete this function, simply type in any information into the provided Text Boxes and select "Add Recipe", this will add it to 
    the Recipe table and display itself around the top of the page to be clicked on and viewed inside those same text boxes at any time. 
@@ -120,7 +120,6 @@ From here, in your Visual Studio code go to the "password.js" file in the create
 
 11. After you are satisfied with the tables and any changes you may have made, you may return to the "Login" Page and Logout your User.
 
-## Future Plans
+## Final Thoughts
 
-As of now what was shown in <u>Deployment</u> is the only functionality we have. However, some of the plans we have for the future include a fully implemented login page that accesses the User table efficiently, a deep connection between the tables using their foreign keys, and the potential implementation of Hiroku. Regardless of how our final code ends up we are very proud of what we could accomplish in this very busy week and submit it happily as our MVP code.
-
+We are satisfied with the end result of this project, although we were unable to implement every functionality we were previously intneding to in our design we were still able to create a well-functioning application that connects to each table in our database. CRUD has been implemented extensively for the Recipe and Ingredient tables with it being used mildly for the User and Recipe-Ingredient tables which are utilized mostly in the backend to add connections between the tables. We had to depart from a few additional implementations such as the Category selection and the Favorites feature as these were either already partially or fully implemented or proved too troublesome to complete in time. Our team worked tirelessly over these last couple weeks to try and supply the best product we could in the time given, and if this Final Code Submission is what we have to show for it then we believe we succeeded.
