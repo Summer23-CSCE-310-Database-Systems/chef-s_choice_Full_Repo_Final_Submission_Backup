@@ -68,7 +68,7 @@ const RecipeIngredient = () => {
     console.log('Updating recipe ingredient association...');
     // Send PUT request to update the recipe in the backend
     axios
-      .put(`${backendURL}/${selectedRecipe}${selectedIngredient}`, {
+      .put(`${backendURL}/${selectedRecipe}/${selectedIngredient}`, {
         rid: selectedRecipe,
         id: selectedIngredient,
         qty: qty,
@@ -92,7 +92,7 @@ const RecipeIngredient = () => {
     const handleDeleteRecipeIngredient = () => {
       console.log('Deleting recipe ingredients association...');
       // Send DELETE request to delete the recipe from the backend
-      axios.delete(`${backendURL}/${selectedRecipe}${selectedIngredient}`).then((response) => {
+      axios.delete(`${backendURL}/${selectedRecipe}/${selectedIngredient}`).then((response) => {
         console.log('Recipe deleted successfully:', response.data);
         setRecipeIngredients((prevRecipesIngredients) =>
           prevRecipesIngredients.filter((recipeIngredients) => RecipeIngredient.rid !== setSelectedRecipe)
