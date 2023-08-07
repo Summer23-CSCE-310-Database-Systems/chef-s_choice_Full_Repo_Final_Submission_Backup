@@ -6,7 +6,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'chefschoice',
-  password: ps,
+  password: 't',
   port: '5432',
 });
 
@@ -30,19 +30,21 @@ try {
           Instructions varchar(100),
           CONSTRAINT fk_orders_client FOREIGN KEY (UID) REFERENCES Users (UID)
         );
-  
-        CREATE TABLE Recipe_Ingredient (
-          RID int,
-          IID int,
-          QTY varchar(100),
-          PRIMARY KEY (RID, IID)
-        );
-  
+
         CREATE TABLE Ingredients (
           ID SERIAL PRIMARY KEY,
           Name varchar(100),
           Details varchar(100),
           calories_per_oz varchar(100)
+        );
+  
+        CREATE TABLE Recipe_Ingredient (
+          RID int,
+          ID int,
+          QTY varchar(100),
+          PRIMARY KEY (RID, ID),
+          CONSTRAINT fk_recipe FOREIGN KEY (RID) REFERENCES Recipes (RID),
+          CONSTRAINT fk_ingredients FOREIGN KEY (ID) REFERENCES Ingredients (ID)
         );
       `);
       console.log('Tables created successfully!');

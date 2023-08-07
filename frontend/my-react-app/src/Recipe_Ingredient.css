@@ -1,0 +1,62 @@
+body {
+    background-color: #3E1818;
+  }
+  
+  body recipe_ingredient {
+    background-color: #3E1818;
+    color: white;
+    font-family: sans-serif;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body recipe_ingredient ul {
+    list-style-type: none;
+    margin-bottom: 0.1px;
+    margin-top: 10px;
+    padding: 1px;
+  }
+  
+  body recipe_ingredient li {
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  
+  body recipe_ingredient viewbutton {
+    background-color: #954130;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 30px;
+    cursor: pointer;
+  }
+  
+  body recipe_ingredient viewbutton:hover {
+    background-color: #88352B;
+  }
+  
+  body recipe_ingredient button {
+    background-color: #954130;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-left: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  
+  body recipe_ingredient button:hover {
+    background-color: #88352B;
+  }
+  
+  body recipe_ingredient h1 {
+    color: white;
+  }

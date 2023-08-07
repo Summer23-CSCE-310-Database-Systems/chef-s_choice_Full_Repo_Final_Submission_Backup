@@ -1,3 +1,3 @@
-ps = 'hungry';
+ps = 't';
 
 module.exports = ps;
