@@ -17,32 +17,32 @@ try {
       await client.query(`
         CREATE TABLE Users (
           UID SERIAL PRIMARY KEY,
-          FName varchar(50),
-          LName varchar(50)
+          FName varchar(100),
+          LName varchar(100)
         );
   
         CREATE TABLE Recipes (
           RID SERIAL PRIMARY KEY,
           UID int,
-          Recipe_name varchar(50),
-          Category varchar(50),
-          Culture varchar(50),
-          Instructions varchar(50),
+          Recipe_name varchar(100),
+          Category varchar(100),
+          Culture varchar(100),
+          Instructions varchar(100),
           CONSTRAINT fk_orders_client FOREIGN KEY (UID) REFERENCES Users (UID)
         );
   
         CREATE TABLE Recipe_Ingredient (
           RID int,
           IID int,
-          QTY varchar(50),
+          QTY varchar(100),
           PRIMARY KEY (RID, IID)
         );
   
         CREATE TABLE Ingredients (
           ID SERIAL PRIMARY KEY,
-          Name varchar(50),
-          Details varchar(50),
-          calories_per_oz varchar(50)
+          Name varchar(100),
+          Details varchar(100),
+          calories_per_oz varchar(100)
         );
       `);
       console.log('Tables created successfully!');
