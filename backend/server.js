@@ -25,12 +25,14 @@ app.use(express.json());
 const ingredientsAPI = require('./ingredients_api');
 const recipesAPI = require('./recipes_api');
 const userAPI = require('./user_api');
+const recipeIngredientAPI = require('./recipe_ingredient_api')
 
 
 // Mount the API routers
 app.use('/backend/ingredients_api', ingredientsAPI);
 app.use('/backend/recipes_api', recipesAPI);
 app.use('/backend/user_api', userAPI)
+app.use('./backend/recipe_ingredient_api', recipeIngredientAPI);
 
 const port = 80; // Choose any available port number
 const server = http.createServer(app);
