@@ -50,13 +50,13 @@ async function handleRequest(req, res) {
     case 'PUT':
       try {
         // Parse the request body to get the ingredient data
-        const recipes = req.body;
+        const recipe_ingredients = req.body;
 
         // Update the ingredient in the database
         const client = await pool.connect();
         const result = await client.query(
-          'UPDATE recipes SET recipe_name=$1, category=$2, culture=$3, instructions=$4 WHERE rid=$5 RETURNING *',
-          [recipes.recipe_name, recipes.category, recipes.culture, recipes.instructions, recipes.rid]
+          'UPDATE recipe_ingredient SET rid=$1, id=$2, qty=$3 WHERE rid=$1 AND id=$2 RETURNING *',
+          [recipe_ingredients.rid, recipe_ingredients.id, recipe_ingredients.qty]
         );
         client.release();
 
@@ -69,9 +69,10 @@ async function handleRequest(req, res) {
     case 'DELETE':
       try {
         const rid = Number(req.params.rid);
+        const id = Number(req.params.id);
 
         const client = await pool.connect();
-        const result = await client.query('DELETE FROM recipe_ingredient WHERE rid=$1', [rid]);
+        const result = await client.query('DELETE FROM recipe_ingredient WHERE rid=$1 AND id=$2', [rid, id]);
         client.release();
 
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
@@ -93,6 +94,6 @@ async function handleRequest(req, res) {
 router.route('/').get(handleRequest).post(handleRequest);
 
 // Route for handling PUT and DELETE requests to /backend/ingredients_api/:rid
-router.route('/:rid').put(handleRequest).delete(handleRequest);
+router.route('/:rid/:id').get(handleRequest).post(handleRequest);
 
 module.exports = router;

@@ -32,7 +32,7 @@ const recipeIngredientAPI = require('./recipe_ingredient_api')
 app.use('/backend/ingredients_api', ingredientsAPI);
 app.use('/backend/recipes_api', recipesAPI);
 app.use('/backend/user_api', userAPI)
-app.use('./backend/recipe_ingredient_api', recipeIngredientAPI);
+app.use('/backend/recipe_ingredient_api', recipeIngredientAPI);
 
 const port = 80; // Choose any available port number
 const server = http.createServer(app);
