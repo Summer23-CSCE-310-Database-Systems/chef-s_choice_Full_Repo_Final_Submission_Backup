@@ -60,7 +60,7 @@ Other helpful installs for npm we've come across that are required to run the co
 
 ## Tests
 
-So far there is no formal way to test it using an external application or test code, the only tests conducted are stress tests to see whether the functions perform as intended or if there are any exasperating bugs.
+For testing we decided to run individual components such as each functionality of CRUD for the Recipe and Ingredients pages, making sure that nothing broke along the way of our implementations. None of us were comfortable or knowledgabe in creating individual test cases so we created a system. Before a git pull we would individually check the application for any existing bugs, if none were found we performed the pull and checked again, if new bugs appeared we knew where to check and could systematically remove them from our application.
 
 ## Execute Code
 
