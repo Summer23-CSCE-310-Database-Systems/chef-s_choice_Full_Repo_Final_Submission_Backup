@@ -72,11 +72,12 @@ async function handleRequest(req, res) {
     // Write a DELETE case to remove data from the Recipe-Ingredient table
     case 'DELETE':
       try {
-        const rid = Number(req.params.rid);
-        const id = Number(req.params.id);
+        const recipe_ingredients = req.body;
 
         const client = await pool.connect();
-        const result = await client.query('DELETE FROM recipe_ingredient WHERE rid=$1 AND id=$2', [rid, id]);
+        const result = await client.query('DELETE FROM recipe_ingredient WHERE rid=$1 AND id=$2', 
+        [recipe_ingredients.rid, recipe_ingredients.id]
+        );
         client.release();
 
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
