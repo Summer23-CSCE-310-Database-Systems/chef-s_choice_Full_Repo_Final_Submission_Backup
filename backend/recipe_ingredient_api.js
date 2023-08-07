@@ -98,7 +98,7 @@ async function handleRequest(req, res) {
 // Route for handling GET and POST requests to /backend/ingredients_api
 router.route('/').get(handleRequest).post(handleRequest);
 
-// Route for handling PUT and DELETE requests to /backend/ingredients_api/:rid
-router.route('/:rid/:id').get(handleRequest).post(handleRequest);
+// Route for handling PUT and DELETE requests to /backend/ingredients_api/:rid/:id
+router.route('/:rid/:id').put(handleRequest).delete(handleRequest);
 
 module.exports = router;

@@ -112,7 +112,9 @@ const RecipeIngredient = () => {
       <ul>
         {recipeIngredients.map((recipeIngredients) => (
           <li key={`${recipeIngredients.rid}-${recipeIngredients.id}`}>
-            Recipe: {recipeIngredients.rid}, Ingredient: {recipeIngredients.id}, Quantity: {recipeIngredients.qty}
+            <strong>Recipe:</strong> {recipes.find(recipe => recipe.rid === recipeIngredients.rid)?.recipe_name || "Unknown Recipe"}
+            <strong> Ingredient:</strong> {ingredients.find(ingredient => ingredient.id  === recipeIngredients.id)?.name || "Unknown"}
+            <strong> Quantity:</strong> {recipeIngredients.qty}
             <viewbutton onClick={() => viewRecipeIngredients(recipeIngredients)}>View</viewbutton>
           </li>
         ))}

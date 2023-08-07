@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Recipe.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import RecipeIngredient from './Recipe_Ingredient';
 
 // Use the absolute URL of the backend server
 const backendURL = 'http://localhost:80/backend/recipes_api';
@@ -96,7 +97,6 @@ const Recipe = () => {
     setRid(recipe.rid);
   };
 
- 
   // Render the recipe list, form for adding a new recipe, and buttons for editing and deleting
   return (
     <recipe>
