@@ -104,7 +104,7 @@ From here, in your Visual Studio code go to the "password.js" file in the create
 5. From here the application should open on it's own, in the event that it does not, open up your browser and enter:
    `http:localhost:3000` in order to load the front-end, already connected to the back-end
 
-6. From the login page you may sign in using any name, this name will be provided an automated User ID which will permanently stick to    
+6. From the login page you may sign in using any name, this name will be given a set User ID which will permanently stick to    
    that name and be added to the Database.
 
 7. After submitting to the Login page you can move on to the Recipe page using the Navigation bar, here we have implemented the CRUD functionality, making it so that you may Add, View, Update, or Delete any of the tuples in the Recipe database.
@@ -113,10 +113,9 @@ From here, in your Visual Studio code go to the "password.js" file in the create
    the Recipe table and display itself around the top of the page to be clicked on and viewed inside those same text boxes at any time. 
 
 9. In order to run the Update and Delete commands, you simply click on the "View" button next to their name at the top of the page, if    
-   you want to update them you type in the new informatio and click the "Update Recipe" button. If you want to delete the recipe from the table all you need to hit is "Delete Recipe" after you're viewing it.
+   you want to update them you type in the new information and click the "Update Recipe" button. If you want to delete the recipe from the table all you need to hit is "Delete Recipe" after you're viewing it.
 
-10. Steps 7 through 9 apply almost directly to the way in which the "Ingredients" page is implemented, having the same functionality and 
-    operated in the same way.
+10. Steps 7 through 9 are the same for the Ingredients page as it has the same functionality.
 
 11. After you are satisfied with the tables and any changes you may have made, you may return to the "Login" Page and Logout your User.
 
