@@ -43,8 +43,8 @@ try {
           ID int,
           QTY varchar(100),
           PRIMARY KEY (RID, ID),
-          CONSTRAINT fk_recipe FOREIGN KEY (RID) REFERENCES Recipes (RID),
-          CONSTRAINT fk_ingredients FOREIGN KEY (ID) REFERENCES Ingredients (ID)
+          CONSTRAINT fk_recipe FOREIGN KEY (RID) REFERENCES Recipes (RID) ON DELETE CASCADE,
+          CONSTRAINT fk_ingredients FOREIGN KEY (ID) REFERENCES Ingredients (ID) ON DELETE CASCADE
         );
       `);
       console.log('Tables created successfully!');

@@ -46,9 +46,9 @@ const RecipeIngredient = () => {
     console.log('Adding recipe-ingredient association...');
 
     axios.post(backendURL, {
-      RID: selectedRecipe,
-      ID: selectedIngredient,
-      QTY: qty,
+      rid: selectedRecipe,
+      id: selectedIngredient,
+      qty: qty,
     })
     .then((response) => {
       console.log('Recipe-ingredient association added successfully:', response.data);
@@ -63,14 +63,59 @@ const RecipeIngredient = () => {
     });
   };
 
+  // Handle updating an existing recipe
+  const handleEditRecipeIngredient = () => {
+    console.log('Updating recipe ingredient association...');
+    // Send PUT request to update the recipe in the backend
+    axios
+      .put(`${backendURL}/${selectedRecipe}${selectedIngredient}`, {
+        rid: selectedRecipe,
+        id: selectedIngredient,
+        qty: qty,
+      })
+      .then((response) => {
+        console.log('Recipe updated successfully:', response.data);
+        setRecipeIngredients((prevRecipeIngredients) =>
+          prevRecipeIngredients.map((recipeIngredients) =>
+          recipeIngredients.rid === selectedRecipe && recipeIngredients.id === selectedIngredient
+          ? response.data 
+          : recipeIngredients
+          )
+        );
+      })
+      .catch((error) => {
+        console.error('Error updating recipe:', error);
+      });
+    };
+
+    // Handle deleting a recipe
+    const handleDeleteRecipeIngredient = () => {
+      console.log('Deleting recipe ingredients association...');
+      // Send DELETE request to delete the recipe from the backend
+      axios.delete(`${backendURL}/${selectedRecipe}${selectedIngredient}`).then((response) => {
+        console.log('Recipe deleted successfully:', response.data);
+        setRecipeIngredients((prevRecipesIngredients) =>
+          prevRecipesIngredients.filter((recipeIngredients) => RecipeIngredient.rid !== setSelectedRecipe)
+        );
+      });
+    };
+
+    // Display the details of a selected recipe
+    const viewRecipeIngredients = (recipeIngredients) => {
+      setSelectedRecipe(recipeIngredients.rid);
+      setSelectedIngredient(recipeIngredients.id);
+      setQty(recipeIngredients.qty);
+    };
+
   return (
     <recipe_ingredient>
     <div>
       <h1>Recipe Ingredient</h1>
       <ul>
-        {recipeIngredients.map((association) => (
-          <li key={`${association.RID}-${association.ID}`}>
-            Recipe: {association.RID}, Ingredient: {association.ID}, Quantity: {association.QTY}
+        {recipeIngredients.map((recipeIngredients) => (
+          <li key={`${recipeIngredients.rid}-${recipeIngredients.id}`}>
+            Recipe: {recipeIngredients.rid}, Ingredient: {recipeIngredients.id}, Quantity: {recipeIngredients.qty}
+            <viewbutton onClick={() => viewRecipeIngredients(recipeIngredients)}>View</viewbutton>
           </li>
         ))}
       </ul>
@@ -92,7 +137,7 @@ const RecipeIngredient = () => {
         >
           <option value="">Select Ingredient</option>
           {ingredients.map((ingredient) => (
-            <option key={ingredient.ID} value={ingredient.ID}>
+            <option key={ingredient.id} value={ingredient.id}>
               {ingredient.name}
             </option>
           ))}
@@ -105,6 +150,10 @@ const RecipeIngredient = () => {
         />
         <button type="submit">Add Recipe-Ingredient</button>
       </form>
+      <div>
+          <button onClick={handleEditRecipeIngredient}>Update Recipe Ingredients</button>
+          <button onClick={handleDeleteRecipeIngredient}>Delete Recipe Ingredients</button>
+      </div>
     </div>
     </recipe_ingredient>
   );
