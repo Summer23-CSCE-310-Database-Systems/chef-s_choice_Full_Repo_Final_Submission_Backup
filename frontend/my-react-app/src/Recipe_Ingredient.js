@@ -53,9 +53,7 @@ const RecipeIngredient = () => {
     .then((response) => {
       console.log('Recipe-ingredient association added successfully:', response.data);
       setRecipeIngredients([...recipeIngredients, response.data]);
-      // Reset input fields after adding association
-      // setSelectedRecipe(null);
-      // setSelectedIngredient(null);
+      // Reset quanity input fields after adding association
       setQty('');
     })
     .catch((error) => {
