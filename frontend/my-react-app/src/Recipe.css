@@ -65,5 +65,14 @@ body h2 {
   color: white;
   font-weight: bold;
   text-decoration: underline;
-  margin-top: 100px;
+  margin-top: 80px;
+  font-size: 32px;
+}
+
+body h3 {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-top: 20px;
+  font-size: 32px;
 }
