@@ -60,3 +60,10 @@ body recipe button:hover {
 body recipe h1 {
   color: white;
 }
+
+body h2 {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-top: 100px;
+}
