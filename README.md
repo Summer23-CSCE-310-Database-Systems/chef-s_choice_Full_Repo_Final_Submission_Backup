@@ -115,12 +115,16 @@ From here, in your Visual Studio code go to the "password.js" file in the create
 9. In order to run the Update and Delete commands, you simply click on the "View" button next to their name at the top of the page, if    
    you want to update them you type in the new information and click the "Update Recipe" button. If you want to delete the recipe from the table all you need to hit is "Delete Recipe" after you're viewing it.
 
-10. Steps 7 through 9 are the same for the Ingredients page as it has the same functionality.
+10. An exclusive functionality to the Recipe table is also available, at the bottom of the page you can select the specific categories you've created and only those recipes will be displayed below.
 
-11. Lastly you can navigate to the Recipe-Ingredient page
+11. Steps 7 through 9 are the same for the Ingredients page as it has the same functionality.
 
-11. After you are satisfied with the tables and any changes you may have made, you may return to the "Login" Page and Logout your User.
+12. Lastly you can navigate to the Recipe-Ingredient page, here you can select between any of the Recipes or Ingredients you've created and manipulate the quantity of said ingredients. After doing so you may add them to the database using the "Add" button on the side or Update/Delete them by first pressing "view" next to your entries and then clicking either of the corresponding buttons (You must change the quamtity of an Ingredient for it to actually Update).
+
+13. NOTE: Upon deletion of a specific Recipe or Ingredient, any relation in the Recipe-Ingredient Table/page will also be deleted.
+
+14. After you are satisfied with the tables and any changes you may have made, you may return to the "Login" Page and Logout your User.
 
 ## Final Thoughts
 
-We are satisfied with the end result of this project, although we were unable to implement every functionality we were previously intending to in our design we were still able to create a well-functioning application that connects to each table in our database. CRUD has been implemented extensively for the Recipe and Ingredient tables with it being implemented slightly less for the User and Recipe-Ingredient tables which are utilized mostly in the backend to add connections between the tables. We had to depart from a few additional implementations such as the Category selection and the Favorites feature as these were either already partially or fully implemented or proved too troublesome to complete on time. Our team worked tirelessly over these last couple weeks to try and supply the best product we could in the time given, and if this Final Code Submission is what we have to show for it then we believe we succeeded.
+We are satisfied with the end result of this project, although we were unable to implement every functionality we were previously intending to in our design we were still able to create a well-functioning application that connects to each table in our database. CRUD has been implemented extensively for the Recipe, Ingredient, and combined Recipe-Ingredient tables with it being implemented slightly less for the User table which was utilized mostly in the backend to add connections between the tables. We had to depart from a few additional implementations such as the Ingredients selection and the Favorites feature as these were either already partially or fully implemented or proved too troublesome to complete on time. Our team worked tirelessly over these last couple weeks to try and supply the best product we could in the time given, and if this Final Code Submission is what we have to show for it then we believe we succeeded.
