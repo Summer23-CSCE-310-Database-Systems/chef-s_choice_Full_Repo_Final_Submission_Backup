@@ -108,7 +108,7 @@ const RecipeIngredient = () => {
   return (
     <recipe_ingredient>
     <div>
-      <h1>Recipe Ingredient</h1>
+      <h1>Recipe-Ingredient Relations: </h1>
       <ul>
         {recipeIngredients.map((recipeIngredients) => (
           <li key={`${recipeIngredients.rid}-${recipeIngredients.id}`}>
