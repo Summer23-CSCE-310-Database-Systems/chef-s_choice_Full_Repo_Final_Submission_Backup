@@ -18,6 +18,7 @@ const Recipe = () => {
   const [instructions, setInstructions] = useState(''); // Recipe instructions input field value
   const navigate = useNavigate(); // Navigation function
   const [selectedCategory, setSelectedCategory] = useState(''); // Select Specific Category
+  const [selectedCulture, setSelectedCulture] = useState(''); // Select Specific Culture
 
   // Fetch recipe data from the backend on component mount
   useEffect(() => {
@@ -92,6 +93,11 @@ const Recipe = () => {
   // Display the selection of a selected category
   const selectCategory = (category) => {
     setSelectedCategory(category);
+  };
+
+  // Display the selection of a selected culture
+  const selectCulture = (culture) => {
+    setSelectedCulture(culture);
   };
 
   // Display the details of a selected recipe
@@ -169,6 +175,35 @@ const Recipe = () => {
           {recipes
             .filter((recipe) =>
               selectedCategory ? recipe.category === selectedCategory : true
+            )
+            .map((recipe) => (
+              <li key={recipe.rid}>
+                {recipe.recipe_name}
+                <viewbutton onClick={() => viewRecipe(recipe)}>View</viewbutton>
+              </li>
+            ))}
+        </ul>
+
+        {/* Display buttons to select the categories */}
+        <div>
+          <h3>Display Cultures:</h3>
+          {Array.from(new Set(recipes.map((recipe) => recipe.culture))).map(
+            (culture) => (
+              <button
+                key={culture}
+                onClick={() => selectCulture(culture)}
+              >
+                {culture}
+              </button>
+            )
+          )}
+        </div>
+
+        {/* Display recipes of the selected category */}
+        <ul>
+          {recipes
+            .filter((recipe) =>
+              selectedCulture ? recipe.culture === selectedCulture : true
             )
             .map((recipe) => (
               <li key={recipe.rid}>
