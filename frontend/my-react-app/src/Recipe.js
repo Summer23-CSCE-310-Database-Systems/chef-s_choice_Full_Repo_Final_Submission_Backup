@@ -17,6 +17,7 @@ const Recipe = () => {
   const [culture, setCulture] = useState(''); // Recipe culture input field value
   const [instructions, setInstructions] = useState(''); // Recipe instructions input field value
   const navigate = useNavigate(); // Navigation function
+  const [selectedCategory, setSelectedCategory] = useState(''); // Select Specific Category
 
   // Fetch recipe data from the backend on component mount
   useEffect(() => {
@@ -88,6 +89,11 @@ const Recipe = () => {
     });
   };
 
+  // Display the selection of a selected category
+  const selectCategory = (category) => {
+    setSelectedCategory(category);
+  };
+
   // Display the details of a selected recipe
   const viewRecipe = (recipe) => {
     setName(recipe.recipe_name);
@@ -101,7 +107,7 @@ const Recipe = () => {
   return (
     <recipe>
       <div>
-        <h1>Recipes</h1>
+        <h1>Recipes:</h1>
         <ul>
           {recipes.map((recipe) => (
             <li key={recipe.rid}>
@@ -142,6 +148,35 @@ const Recipe = () => {
           <button onClick={handleEditRecipe}>Update Recipe</button>
           <button onClick={handleDeleteRecipe}>Delete Recipe</button>
         </div>
+
+        {/* Display buttons to select the categories */}
+        <div>
+          <h2>Display Categories:</h2>
+          {Array.from(new Set(recipes.map((recipe) => recipe.category))).map(
+            (category) => (
+              <button
+                key={category}
+                onClick={() => selectCategory(category)}
+              >
+                {category}
+              </button>
+            )
+          )}
+        </div>
+
+        {/* Display recipes of the selected category */}
+        <ul>
+          {recipes
+            .filter((recipe) =>
+              selectedCategory ? recipe.category === selectedCategory : true
+            )
+            .map((recipe) => (
+              <li key={recipe.rid}>
+                {recipe.recipe_name}
+                <viewbutton onClick={() => viewRecipe(recipe)}>View</viewbutton>
+              </li>
+            ))}
+        </ul>
       </div>
     </recipe>
   );
