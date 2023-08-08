@@ -72,16 +72,20 @@ async function handleRequest(req, res) {
     // Write a DELETE case to remove data from the Recipe-Ingredient table
     case 'DELETE':
       try {
-        const recipe_ingredients = req.body;
+        // const recipe_ingredients = req.body;
+        // ridNum = Number(recipe_ingredients.rid);
+        // idNum = Number(recipe_ingredients.id);
+        const rid = Number(req.params.rid); // Get the recipe ID from the request parameters
+        const id = Number(req.params.id); // Get the recipe ID from the request parameters
 
         const client = await pool.connect();
         const result = await client.query('DELETE FROM recipe_ingredient WHERE rid=$1 AND id=$2', 
-        [recipe_ingredients.rid, recipe_ingredients.id]
+        [rid, id]
         );
         client.release();
 
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        res.end(JSON.stringify({ rid }));
+        res.end(JSON.stringify({ rid, id}));
       } catch (err) {
         console.error('Error deleting data from the database:', err);
         res.writeHead(500, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' });
